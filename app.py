@@ -232,13 +232,13 @@ with m4:
     st.metric("Eletrônicos (>2014)", f"{pct:.1f}%")
 
 m2, m3 = st.columns(2)
-"""
-with m2:
-    saldo_total = df["Saldo int"].sum() if "Saldo int" in df.columns else 0
+
+#with m2:
+#    saldo_total = df["Saldo int"].sum() if "Saldo int" in df.columns else 0
     # converter para formato BRL - de R$ 1,189,855.00 para R$ 1.189.855,00
-    saldo_total = f"R$ {saldo_total:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
-    st.metric("Saldo Total", f"{saldo_total}")
-"""
+#    saldo_total = f"R$ {saldo_total:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
+#    st.metric("Saldo Total", f"{saldo_total}")
+
 
 with m3:
     dep_total = df["Valor Depósito Original Float"].sum() if "Valor Depósito Original Float" in df.columns else 0
