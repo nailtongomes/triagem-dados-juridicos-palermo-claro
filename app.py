@@ -171,11 +171,13 @@ tribunais_sel = st.sidebar.multiselect("Tribunais", options=all_tribunais)
 all_ufs = sorted(df_raw["UF"].dropna().unique().tolist())
 ufs_sel = st.sidebar.multiselect("Estados (UF)", options=all_ufs)
 
+"""
 # 2. Filtros de Saldo e Valor
 st.sidebar.markdown("---")
 st.sidebar.subheader("Filtros de Valor")
 min_saldo = st.sidebar.number_input("Saldo Judicial Mínimo (R$)", min_value=0, value=0, step=500)
 usar_saldo_1k = st.sidebar.toggle("Apenas Saldo > R$ 1.000", value=False)
+"""
 
 # 3. Status e Validação
 st.sidebar.markdown("---")
@@ -232,11 +234,14 @@ with m4:
     st.metric("Eletrônicos (>2014)", f"{pct:.1f}%")
 
 m2, m3 = st.columns(2)
+"""
 with m2:
     saldo_total = df["Saldo int"].sum() if "Saldo int" in df.columns else 0
     # converter para formato BRL - de R$ 1,189,855.00 para R$ 1.189.855,00
     saldo_total = f"R$ {saldo_total:,.2f}".replace(",", "X").replace(".", ",").replace("X", ".")
     st.metric("Saldo Total", f"{saldo_total}")
+"""
+
 with m3:
     dep_total = df["Valor Depósito Original Float"].sum() if "Valor Depósito Original Float" in df.columns else 0
     # converter para formato BRL - de R$ 1,189,855.00 para R$ 1.189.855,00
@@ -302,13 +307,16 @@ st.dataframe(
     use_container_width=True,
     hide_index=True,
     column_config={
-        "Saldo int": st.column_config.NumberColumn("Saldo Atual", format="R$ %.2f"),
+        # "Saldo int": st.column_config.NumberColumn("Saldo Atual", format="R$ %.2f"),
         "Valor Depósito Original Float": st.column_config.NumberColumn("Dep. Original", format="R$ %.2f"),
         "cnj_ok": st.column_config.CheckboxColumn("CNJ Válido"),
         "doc_ok": st.column_config.CheckboxColumn("Doc OK"),
         "ano_base": st.column_config.NumberColumn("Ano Base", format="%d")
     }
 )
+
+# ocultar coluna Saldo int
+df = df.drop(columns=['Saldo int'])
 
 st.sidebar.markdown("---")
 st.sidebar.caption("v1.2.0 | Advocacia Palermo & N3 Wizards")
