@@ -171,13 +171,11 @@ tribunais_sel = st.sidebar.multiselect("Tribunais", options=all_tribunais)
 all_ufs = sorted(df_raw["UF"].dropna().unique().tolist())
 ufs_sel = st.sidebar.multiselect("Estados (UF)", options=all_ufs)
 
-"""
 # 2. Filtros de Saldo e Valor
-st.sidebar.markdown("---")
-st.sidebar.subheader("Filtros de Valor")
-min_saldo = st.sidebar.number_input("Saldo Judicial Mínimo (R$)", min_value=0, value=0, step=500)
-usar_saldo_1k = st.sidebar.toggle("Apenas Saldo > R$ 1.000", value=False)
-"""
+#st.sidebar.markdown("---")
+#st.sidebar.subheader("Filtros de Valor")
+#min_saldo = st.sidebar.number_input("Saldo Judicial Mínimo (R$)", min_value=0, value=0, step=500)
+#usar_saldo_1k = st.sidebar.toggle("Apenas Saldo > R$ 1.000", value=False)
 
 # 3. Status e Validação
 st.sidebar.markdown("---")
