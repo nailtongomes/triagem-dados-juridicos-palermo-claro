@@ -195,10 +195,12 @@ if ufs_sel:
     df = df[df["UF"].isin(ufs_sel)]
 
 # Filtro de Saldo
+"""
 if "Saldo int" in df.columns:
     df = df[df["Saldo int"] >= min_saldo]
 if usar_saldo_1k and "saldo_maior_1k" in df.columns:
     df = df[df["saldo_maior_1k"] == True]
+"""
 
 # Qualidade e Ano
 if apenas_cnj_ok and "cnj_ok" in df.columns:
