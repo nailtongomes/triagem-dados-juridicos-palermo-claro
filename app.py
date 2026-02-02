@@ -300,12 +300,15 @@ if 'ano_base' in df.columns:
     if 'Tipo' not in cols_df:
         cols_df.insert(0, 'Tipo')
 
+df_sorted = df[cols_df].sort_values(by='Saldo int', ascending=False)
+df_exibicao = df_sorted.drop(columns=["Saldo int"])
+
 st.dataframe(
-    df[cols_df].sort_values(by='Saldo int', ascending=False),
+    df_exibicao,
     use_container_width=True,
     hide_index=True,
     column_config={
-        # "Saldo int": st.column_config.NumberColumn("Saldo Atual", format="R$ %.2f"),
+        #"Saldo int": st.column_config.NumberColumn("Saldo Atual", format="R$ %.2f"),
         "Valor Depósito Original Float": st.column_config.NumberColumn("Dep. Original", format="R$ %.2f"),
         "cnj_ok": st.column_config.CheckboxColumn("CNJ Válido"),
         "doc_ok": st.column_config.CheckboxColumn("Doc OK"),
@@ -314,7 +317,7 @@ st.dataframe(
 )
 
 # ocultar coluna Saldo int
-df = df.drop(columns=['Saldo int'])
+# df = df.drop(columns=['Saldo int'])
 
 st.sidebar.markdown("---")
 st.sidebar.caption("v1.2.0 | Advocacia Palermo & N3 Wizards")
